@@ -8,5 +8,6 @@ pip install -r /root/requirements.txt --user --upgrade
 
 buildenie espressa:
 cd /root/cmake-build-debug
+rm -rf *
 cmake ../
 make -j 4
