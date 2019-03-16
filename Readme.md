@@ -1,3 +1,7 @@
+Install rsync on your local machine
+brew install rsync
+
+
 Buildovanie: docker build . -t espresso
 
 Spustenie:

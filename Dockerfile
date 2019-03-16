@@ -1,9 +1,7 @@
 FROM ubuntu:16.04
-RUN apt-get update
-
 ##GDB server
 RUN apt-get update && \
-apt-get install -y openssh-server cmake gcc \
+apt-get install -y rsync openssh-server cmake gcc \
 build-essential vim python tcpdump telnet byacc \
 flex iproute2 gdbserver less bison valgrind firefox
 RUN mkdir /var/run/sshd
