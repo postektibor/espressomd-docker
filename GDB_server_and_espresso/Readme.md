@@ -7,7 +7,9 @@ docker build -t espresso .
 
 
 Running:
-docker run -d -p 3022:22 -p 7777:7777 -p 9999:9999 --restart unless-stopped --privileged --security-opt seccomp:unconfined --name espresso-container espresso
+docker run -d -p 3022:22 -p 7777:7777 -p 9999:9999 --restart unless-stopped --privileged --security-opt seccomp:unconfined --name espresso-container --cpuset-cpus="0-31" espresso
+
+//configuration fr server with 32 CPU cores
 
 Connecting to new container, password is 'root':
 ssh -X -p 3022 root@127.0.0.1
@@ -22,6 +24,7 @@ https://www.jetbrains.com/help/clion/remote-projects-support.html
 
 
 Helper commands:
+docker stats
 Docker removing all images and containers:
 docker rmi $(docker images -q)
 docker rm $(docker ps -a -q)
