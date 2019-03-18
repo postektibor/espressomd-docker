@@ -1,4 +1,5 @@
-Building: docker build . -t espresso_build
+Building: 
+docker build . -t espresso_build
 
 Running:
 docker run -v /Users/tiborpostek/Documents/bitbucket/espresso:/root/ -it espresso_build /bin/bash
@@ -10,8 +11,7 @@ Fonstall for first time:
 pip install -r /root/requirements.txt --user --upgrade
 
 Making of espresso:
-cd /root/cmake-build-debug
-rm -rf *
+cd /root/build
 cmake ../
 make -j 4
 
