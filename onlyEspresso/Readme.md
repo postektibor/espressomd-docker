@@ -1,4 +1,4 @@
-Building: 
+Building:
 docker build . -t espresso_build
 
 Running:
@@ -6,9 +6,6 @@ docker run -v /Users/tiborpostek/Documents/bitbucket/espresso:/root/ -it espress
 
 //Change path to espresso
 //Now you have session in terminal with virtual container and you can continue with next commands:
-
-Fonstall for first time:
-pip install -r /root/requirements.txt --user --upgrade
 
 Making of espresso:
 cd /root/build

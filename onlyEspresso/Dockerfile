@@ -1,20 +1,32 @@
-FROM ubuntu:xenial
+FROM nvidia/cuda:9.0-devel-ubuntu16.04
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y \
     apt-utils \
     cmake \
     build-essential \
-    openmpi-bin \
+    curl \
+    pkg-config \
+    openmpi-bin libopenmpi-dev \
+    lcov \
     libfftw3-dev \
     libboost-dev libboost-serialization-dev libboost-mpi-dev libboost-filesystem-dev libboost-test-dev \
+    libgsl-dev \
     cython3 python3 python3-numpy python3-h5py \
+    python-numpy \
+    #toto mozno treba vymazat python-numpy
     lcov \
+    curl \
     git \
     pep8 pylint3 \
+#   python3-vtk7 \ # not available in 16.04
+    python3-sphinx python3-numpydoc python3-pip \
+    libpython-dev \
     libhdf5-openmpi-dev \
     libhdf5-openmpi-10:amd64 \
     libhdf5-10:amd64 \
+    doxygen \
     vim \
     ccache \
+&& pip3 install --upgrade sphinx sphinxcontrib-bibtex \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*

@@ -1,5 +1,6 @@
-FROM ubuntu:16.04
+FROM nvidia/cuda:9.0-devel-ubuntu16.04
 ##GDB server
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
 apt-get install -y rsync openssh-server cmake gcc \
 build-essential vim python tcpdump telnet byacc \
@@ -15,10 +16,33 @@ EXPOSE 22 9999 7777
 CMD ["/usr/sbin/sshd", "-D"]
 
 ##Espresso
-RUN DEBIAN_FRONTEND=noninteractive apt-get -yq install build-essential cmake cython python-numpy \
-libboost-all-dev openmpi-common fftw3-dev libhdf5-dev libhdf5-openmpi-dev \
-doxygen python-opengl python-sphinx python-pip libgsl-dev git
-RUN DEBIAN_FRONTEND=noninteractive apt-get -yq install nvidia-cuda-toolkit
-#Necessary updating next dependencies
-RUN pip install --upgrade pip
-RUN pip install sphinx>=1.6.6 sphinxcontrib-bibtex>=0.3.5 MDAnalysis>=0.16 --user --upgrade
+RUN apt-get update && apt-get install -y \
+    apt-utils \
+    cmake \
+    build-essential \
+    curl \
+    pkg-config \
+    openmpi-bin libopenmpi-dev \
+    lcov \
+    libfftw3-dev \
+    libboost-dev libboost-serialization-dev libboost-mpi-dev libboost-filesystem-dev libboost-test-dev \
+    libgsl-dev \
+    cython3 python3 python3-numpy python3-h5py \
+    python-numpy \
+    #toto mozno treba vymazat python-numpy
+    lcov \
+    curl \
+    git \
+    pep8 pylint3 \
+#   python3-vtk7 \ # not available in 16.04
+    python3-sphinx python3-numpydoc python3-pip \
+    libpython-dev \
+    libhdf5-openmpi-dev \
+    libhdf5-openmpi-10:amd64 \
+    libhdf5-10:amd64 \
+    doxygen \
+    vim \
+    ccache \
+&& pip3 install --upgrade sphinx sphinxcontrib-bibtex \
+&& apt-get clean \
+&& rm -rf /var/lib/apt/lists/*
