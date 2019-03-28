@@ -43,6 +43,7 @@ RUN apt-get update && apt-get install -y \
     doxygen \
     vim \
     ccache \
-&& pip3 install --upgrade sphinx sphinxcontrib-bibtex \
+    && pip3 install --upgrade sphinx sphinxcontrib-bibtex\
+    && pip3 install --upgrade h5py\
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
