@@ -28,8 +28,6 @@ RUN apt-get update && apt-get install -y \
     libboost-dev libboost-serialization-dev libboost-mpi-dev libboost-filesystem-dev libboost-test-dev \
     libgsl-dev \
     cython3 python3 python3-numpy python3-h5py \
-    python-numpy \
-    #toto mozno treba vymazat python-numpy
     lcov \
     curl \
     git \
@@ -43,7 +41,18 @@ RUN apt-get update && apt-get install -y \
     doxygen \
     vim \
     ccache \
-    && pip3 install --upgrade sphinx sphinxcontrib-bibtex\
-    && pip3 install --upgrade h5py\
+#&& pip3 install --upgrade sphinx sphinxcontrib-bibtex \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
+
+### end of modified Dockerfile-9.0
+
+# install Python3 packages required for testing tutorials and samples
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    python3-dev python3-pip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && python3 -m pip install --upgrade pip \
+    && pip3 install --upgrade setuptools \
+    && pip3 install --upgrade six numpy scipy matplotlib ipython nbconvert sphinx sphinxcontrib-bibtex numpydoc

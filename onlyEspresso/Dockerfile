@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y \
     libfftw3-dev \
     libboost-dev libboost-serialization-dev libboost-mpi-dev libboost-filesystem-dev libboost-test-dev \
     libgsl-dev \
-#   cython3 # use pip instead
     cython3 python3 python3-numpy python3-h5py \
     lcov \
     curl \
