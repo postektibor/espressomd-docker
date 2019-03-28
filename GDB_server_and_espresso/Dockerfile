@@ -32,6 +32,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     git \
     pep8 pylint3 \
+    python-numpy \
 #   python3-vtk7 \ # not available in 16.04
     python3-sphinx python3-numpydoc python3-pip \
     libpython-dev \
