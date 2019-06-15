@@ -4,6 +4,12 @@ docker build . -t espresso_build
 Running:
 docker run -v /Users/tiborpostek/Documents/bitbucket/espresso:/root/ -it espresso_build /bin/bash
 
+
+Running with mounted script directory:
+docker run -v /Users/tiborpostek/Documents/bitbucket/espresso:/root/ -v /Users/tiborpostek/Documents/bitbucket/espressomd-scripts/:/root/build/scripts -it espresso_build /bin/bash
+
+
+
 //Change path to espresso
 //Now you have session in terminal with virtual container and you can continue with next commands:
 
